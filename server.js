@@ -23,7 +23,8 @@ const server = http.createServer((req, res) => {
                 path += 'profil.html';
                 break;
             default:
-                path += '404.html';
+                res.statusCode = 404;
+                path +=  res.statusCode+'.html';
                 break;
         }
         fs.readFile(path, (err, data) => {
