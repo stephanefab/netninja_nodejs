@@ -1,3 +1,0 @@
-# open a js file with node
-> node filename.js
-
