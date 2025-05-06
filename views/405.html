@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Method Not Allowed</title>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <style>
+      :root {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
+        
+        /* Light mode colors */
+        --background: #ffffff;
+        --text: #1d1d1f;
+        --secondary-text: #86868b;
+        --accent: #ff453a;
+        --accent-hover: #ff3b30;
+        --border: rgba(0, 0, 0, 0.1);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: #1d1d1f;
+          --text: #f5f5f7;
+          --secondary-text: #a1a1a6;
+          --accent: #ff453a;
+          --accent-hover: #ff3b30;
+          --border: rgba(255, 255, 255, 0.1);
+        }
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--background);
+        color: var(--text);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 2rem;
+      }
+
+      .container {
+        max-width: 550px;
+        text-align: center;
+        animation: fadeIn 1s ease-out;
+      }
+
+      .error-code {
+        font-size: 8rem;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, var(--accent), #ff9f0a);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .title {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+
+      .message {
+        font-size: 1.125rem;
+        color: var(--secondary-text);
+        margin-bottom: 2.5rem;
+      }
+
+      .illustration {
+        position: relative;
+        height: 150px;
+        margin: 2rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .lock-container {
+        width: 80px;
+        height: 80px;
+        position: relative;
+        animation: float 3s infinite ease-in-out;
+      }
+
+      .lock-body {
+        width: 60px;
+        height: 45px;
+        background-color: var(--accent);
+        border-radius: 8px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .lock-shackle {
+        width: 40px;
+        height: 40px;
+        border: 8px solid var(--accent);
+        border-radius: 20px 20px 0 0;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .ripple {
+        position: absolute;
+        border: 2px solid var(--accent);
+        border-radius: 50%;
+        animation: ripple 2s infinite ease-out;
+        opacity: 0;
+      }
+
+      .ripple:nth-child(1) {
+        width: 100px;
+        height: 100px;
+        animation-delay: 0s;
+      }
+
+      .ripple:nth-child(2) {
+        width: 140px;
+        height: 140px;
+        animation-delay: 0.5s;
+      }
+
+      .ripple:nth-child(3) {
+        width: 180px;
+        height: 180px;
+        animation-delay: 1s;
+      }
+
+      .button {
+        display: inline-block;
+        background-color: var(--accent);
+        color: white;
+        padding: 0.8rem 2rem;
+        border-radius: 8px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .button:hover {
+        background-color: var(--accent-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes ripple {
+        0% {
+          transform: scale(0.8);
+          opacity: 0.5;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .error-code {
+          font-size: 6rem;
+        }
+        
+        .title {
+          font-size: 1.5rem;
+        }
+        
+        .message {
+          font-size: 1rem;
+        }
+        
+        .illustration {
+          height: 120px;
+        }
+        
+        .lock-container {
+          width: 60px;
+          height: 60px;
+        }
+        
+        .lock-body {
+          width: 45px;
+          height: 35px;
+        }
+        
+        .lock-shackle {
+          width: 30px;
+          height: 30px;
+          border-width: 6px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1 class="error-code">405</h1>
+      <h2 class="title">Method Not Allowed</h2>
+      <p class="message">The request method is not supported for this resource. Please check the documentation for allowed methods.</p>
+      
+      <div class="illustration">
+        <div class="ripple"></div>
+        <div class="ripple"></div>
+        <div class="ripple"></div>
+        <div class="lock-container">
+          <div class="lock-shackle"></div>
+          <div class="lock-body"></div>
+        </div>
+      </div>
+      
+      <a href="/" class="button">Return Home</a>
+    </main>
+  </body>
+</html>
