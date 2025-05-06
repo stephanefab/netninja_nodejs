@@ -16,6 +16,11 @@ const server = http.createServer((req, res) => {
             case '/about':
                 path += 'about.html';
                 break;
+            case '/about-me':
+                res.statusCode = 301; //redirect code
+                res.setHeader('Location', '/about');
+                res.end();
+                break;
             case '/contact':
                 path += 'contact.html';
                 break;
