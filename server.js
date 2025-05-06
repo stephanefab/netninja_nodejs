@@ -6,41 +6,41 @@ const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/html');
     uri = req.url;
     method = req.method;
+    let path = './views/';
 
     if (method === "GET") {
-        // index: /
-        if (uri === '/') {
-            fs.readFile('./views/index.html', (err, data) => {
-                res.end(data);
-            });
+        switch(uri){
+            case '/':
+                path += 'index.html';
+                break;
+            case '/about':
+                path += 'about.html';
+                break;
+            case '/contact':
+                path += 'contact.html';
+                break;
+            case '/profil':
+                path += 'profil.html';
+                break;
+            default:
+                path += '404.html';
+                break;
         }
-        // about: /about
-        else if (uri === '/about') {
-            fs.readFile('./views/about.html', (err, data) => {
-                res.end(data);
-            });
-        }
-        // contact: /contact
-        else if (uri === '/contact') {
-            fs.readFile('./views/contact.html', (err, data) => {
-                res.end(data);
-            });
-        }
-        // profil : /profil
-        else if (uri === '/profil') {
-            fs.readFile('./views/profil.html', (err, data) => {
-                res.end(data);
-            });
-        }
-        else {
-            res.statusCode = 404;
-            fs.readFile('./views/404.html', (err, data) => {
-                res.end(data);
-            });
-        }
+        fs.readFile(path, (err, data) => {
+            if(err){
+                console.log(err);
+                res.end();
+            }
+            res.end(data);
+        });
     } else {
         res.statusCode = 405;
-        fs.readFile('./views/405.html', (err, data) => {
+        path += res.statusCode+'.html';
+        fs.readFile(path, (err, data) => {
+            if(err){
+                console.log(err);
+                res.end();
+            }
             res.end(data);
         });
     }
