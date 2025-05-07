@@ -1,6 +1,11 @@
 const express = require("express");
 const app = express();
 
+// register view engine
+app.set('view engine', 'ejs');
+app.set('views', 'views'); // default value = views
+
+
 const path = (filename) => {
     return require('path').join(__dirname, 'views/'+filename+'.html');
 }
