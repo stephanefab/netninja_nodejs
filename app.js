@@ -5,29 +5,21 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', 'views'); // default value = views
 
-
-const path = (filename) => {
-    return require('path').join(__dirname, 'views/'+filename+'.html');
-}
-
 app.get('/', (req, res) => {
-    res.sendFile(path('index'));
+    res.render('index');
 });
 app.get('/about', (req, res) => {
-    res.sendFile(path('about'));
+    res.render('about');
 });
-app.get('/about-us', (req, res) => {
-    res.redirect('/about');
+app.get('/blogs/create', (req, res) => {
+    res.render('create');
 });
-app.get('/contact', (req, res) => {
-    res.sendFile(path('contact'));
-});
-app.get('/profil', (req, res) => {
-    res.sendFile(path('profil'));
+app.post('/blogs/create', (req, res) => {
+    res.send("ok");
 });
 
 app.use((req, res) => {
-    res.status(404).sendFile(path(404));
+    res.status(404).render("404");
 });
 app.listen(5500, () => {
  console.log("Server is running on port 5500");
