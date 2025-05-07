@@ -1,0 +1,28 @@
+{
+  "name": "netninja_nodejs",
+  "version": "1.0.0",
+  "description": "learn nodejs from netninja",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephanefab/netninja_nodejs.git"
+  },
+  "keywords": [
+    "nodejs",
+    "beginner"
+  ],
+  "author": "stephanefab",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephanefab/netninja_nodejs/issues"
+  },
+  "homepage": "https://github.com/stephanefab/netninja_nodejs#readme",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "nodemon": "^3.1.10"
+  }
+}
