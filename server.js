@@ -2,59 +2,59 @@ const http = require('http');
 const fs = require('fs');
 
 const server = http.createServer((req, res) => {
-    res.statusCode = 200;
+    uri = req.url
+    method = req.method
+    path = "./views/";
     res.setHeader('Content-Type', 'text/html');
-    uri = req.url;
-    method = req.method;
-    let path = './views/';
+    res.statusCode = 200;
 
-    if (method === "GET") {
+    if(method==="GET"){
         switch(uri){
-            case '/':
-                path += 'index.html';
+            case "/":
+                path+= "index.html";
                 break;
-            case '/about':
-                path += 'about.html';
+            case "/about":
+                path+= "about.html";
                 break;
-            case '/about-me':
-                res.statusCode = 301; //redirect code
-                res.setHeader('Location', '/about');
-                res.end();
+            case "/contact":
+                path+= "contact.html";
                 break;
-            case '/contact':
-                path += 'contact.html';
-                break;
-            case '/profil':
-                path += 'profil.html';
+            case "/profil":
+                path+= "profil.html";
                 break;
             default:
                 res.statusCode = 404;
-                path +=  res.statusCode+'.html';
+                path+="404.html";
                 break;
         }
         fs.readFile(path, (err, data) => {
             if(err){
-                console.log(err);
-                res.end();
+                res.statusCode = 500;
+                res.write("Error 500: Internal Server Error");
             }
-            res.end(data);
-        });
-    } else {
+            else{
+                res.write(data);
+            }
+            res.end();
+        })
+    }else{
         res.statusCode = 405;
-        path += res.statusCode+'.html';
+        path += '405.html';
         fs.readFile(path, (err, data) => {
             if(err){
-                console.log(err);
-                res.end();
+                res.statusCode = 500;
+                res.write("Error 500: Internal Server Error");
             }
-            res.end(data);
-        });
+            else{
+                res.write(data);
+            }
+            res.end();
+        })
     }
-
 });
 
-host = '127.0.0.1';
+host = "127.0.0.1";
 port = 5500;
 server.listen(port, host, () => {
-    console.log(`Server running at http://${host}:${port}`);
-})
+    console.log("Server launched on http://" + host + ":" + port);
+});
