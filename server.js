@@ -16,6 +16,10 @@ const server = http.createServer((req, res) => {
             case "/about":
                 path+= "about.html";
                 break;
+            case "/about-us":
+                res.statusCode = 301;
+                res.setHeader('Location', '/about'); // redirect
+                break;
             case "/contact":
                 path+= "contact.html";
                 break;
@@ -26,7 +30,7 @@ const server = http.createServer((req, res) => {
                 res.statusCode = 404;
                 path+="404.html";
                 break;
-        }
+            }
         fs.readFile(path, (err, data) => {
             if(err){
                 res.statusCode = 500;
