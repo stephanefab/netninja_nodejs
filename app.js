@@ -6,7 +6,7 @@ const app = express();
 
 const dbUri = "mongodb+srv://default_user:geGG6I5Qh8aiu9MA@expressjs-cluster-1.ecch1rq.mongodb.net/netninjas?retryWrites=true&w=majority&appName=expressjs-cluster-1";
 mongoose.connect(dbUri)
-    .then((result) => console.log("connected to db"))
+    .then((result) => app.listen(5500))
     .catch((err) => console.log(err));
 
 // register view engine
@@ -37,7 +37,4 @@ app.post('/blogs/create', (req, res) => {
 
 app.use((req, res) => {
     res.status(404).render("404");
-});
-app.listen(5500, () => {
- console.log("Server is running on port 5500");
 });
