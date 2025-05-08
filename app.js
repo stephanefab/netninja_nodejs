@@ -71,6 +71,15 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about', { title: 'About Page', message: 'This is the about page' });
 });
+app.get('/blogs', (req, res) => {
+    Blog.find().sort({ createdAt: -1 })
+    .then((result) =>{
+        res.render('index', { title: 'Index Page', message: 'Welcome to my website', blogs: result });
+    })
+    .catch((err) => {
+        console.log(err)
+    });
+});
 app.get('/blogs/create', (req, res) => {
     res.render('create', { title: 'Create Blog Post', message: 'Create a new blog post' });
 });
