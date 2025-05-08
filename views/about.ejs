@@ -7,13 +7,8 @@
 </head>
 <body>
     <h1><%= message %></h1>
-    <nav>
-        <ul>
-            <li><a href="/">Index</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/blogs/create">New blog</a></li>
-        </ul>
-    </nav>
+    <!-- // nav partial -->
+    <%- include('./partials/nav.ejs') %>
     <p><%= message %></p>
 </body>
 </html>
