@@ -2,4 +2,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My NodeJs PAGE | <%= title %></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+
+        nav{
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+        }
+
+        ul{
+            display: flex;
+            width: 100%;
+            max-width: 300px;
+            justify-content: space-around;
+            list-style: none;
+        }
+
+        ul a{
+            color: #fff;
+            text-decoration: none;
+        }
+
+        form{
+            padding: 2px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5em;
+            padding: 10px;
+        }
+
+        form div{
+            display: flex;
+            flex-direction: column;
+            gap: .2em;
+        }
+
+        form input{
+            padding: 1em;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+        }
+
+        form textarea{
+            padding: 1em;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+        }
+
+        form input:focus, form textarea:focus{
+            border: 1px solid #00f;
+            transition: all .2s;
+        }
+
+        form button{
+            width: 100%;
+            max-width: 400px;
+            padding: 1em;
+            color: #fff;
+            background-color: #00f;
+            border: none;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        form button:hover{
+            transition: all .2s;
+            border-radius: .3px;
+            background-color: #00a;
+        }
+    </style>
 </head>
