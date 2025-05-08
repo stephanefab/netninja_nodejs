@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My NodeJs PAGE | <%= title %></title>
-</head>
-<body>
+  <!-- // head partial -->
+  <%- include('./partials/head.ejs') %>
+  <body>
     <h1><%= message %></h1>
     <!-- // nav partial -->
     <%- include('./partials/nav.ejs') %>
@@ -25,5 +22,7 @@
       </div>
       <button type="submit">Save</button>
     </form>
-</body>
+    <!-- // footer partial -->
+    <%- include('./partials/footer.ejs') %>
+  </body>
 </html>
