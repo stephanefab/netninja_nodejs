@@ -7,9 +7,9 @@ app.set('views', 'views'); // default value = views
 
 app.get('/', (req, res) => {
     const blogs = [
-        {title: 'Blog 1', content: 'This is the first blog'},
-        {title: 'Blog 2', content: 'This is the second blog'},
-        {title: 'Blog 3', content: 'This is the third blog'}
+        {title: 'Blog 1', snippet: 'This is the first blog'},
+        {title: 'Blog 2', snippet: 'This is the second blog'},
+        {title: 'Blog 3', snippet: 'This is the third blog'}
     ];
     res.render('index', {title: 'Index Page', message: 'Welcome to my website', blogs: blogs});
 });

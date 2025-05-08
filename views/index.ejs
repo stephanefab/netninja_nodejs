@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My NodeJs PAGE | <%= title %></title>
-</head>
-<body>
+  </head>
+  <body>
     <h1><%= message %></h1>
     <nav>
-        <ul>
-            <li><a href="/">Index</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/blogs/create">New blog</a></li>
-        </ul>
+      <ul>
+        <li><a href="/">Index</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/blogs/create">New blog</a></li>
+      </ul>
     </nav>
     <p><%= message %></p>
-</body>
+    <div>
+      <h2>All Blogs</h2>
+      <% if (blogs.length > 0) { %> <% blogs.forEach(blog => { %>
+      <div
+        style="
+          border-top: 3px solid black;
+          padding: 10px;
+          background-color: #ccc;
+          margin-bottom: 10px;
+        "
+      >
+        <h3><%= blog.title %></h3>
+        <p><%= blog.snippet %></p>
+      </div>
+      <% });} else { %>
+      <p>No blogs</p>
+      <% } %>
+    </div>
+  </body>
 </html>
