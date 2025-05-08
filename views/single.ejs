@@ -8,8 +8,8 @@
     <%- include('./partials/nav.ejs') %>
     <p><%= message %></p>
     <div>
-      <h2>All Blogs</h2>
-      <% if (blogs.length > 0) { %> <% blogs.forEach(blog => { %>
+      <h2>Single Blog</h2>
+      <% if (blog) { %>
       <div
         style="
           border-top: 3px solid black;
@@ -21,11 +21,11 @@
         <h3><%= blog.title %></h3>
         <p><%= blog.snippet %></p>
         <p><%= blog.body %></p>
-        <p><%= blog.createdAt %></p>
-        <a href="/blogs/<%= blog._id %>">show</a>
+        <p>Created At: <%= blog.createdAt %></p>
+        <p>Updated At: <%= blog.updatedAt %></p>
       </div>
-      <% });} else { %>
-      <p>No blogs to display ...</p>
+      <% } else { %>
+      <p>oops... Nothing found</p>
       <% } %>
     </div>
     <!-- // footer partial -->

@@ -44,6 +44,16 @@ app.get('/blogs', (req, res) => {
         console.log(err)
     });
 });
+app.get('/blogs/:id', (req, res) => {
+    const id = req.params.id;
+    Blog.findById(id)
+    .then((result) =>{
+        res.render('single', { title: 'Blog Info', message: 'Detail About Blog', blog: result });
+    })
+    .catch((err) => {
+        res.status(404).render("404")
+    });
+});
 // create blog
 app.post('/blogs', (req, res) => {
     // sauvegarde de données dans la bd
