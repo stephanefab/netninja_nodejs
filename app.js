@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+// uri de connexion
 const dbUri = "mongodb+srv://default_user:geGG6I5Qh8aiu9MA@expressjs-cluster-1.ecch1rq.mongodb.net/netninjas?retryWrites=true&w=majority&appName=expressjs-cluster-1";
+// connexion à la bd mongo
 mongoose.connect(dbUri)
     .then((result) => app.listen(5500))
     .catch((err) => console.log(err));

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// creation du schema
 const blogSchema = Schema({
     title: {
         type: String,
@@ -16,5 +17,6 @@ const blogSchema = Schema({
     }
 }, { timestamps: true });
 
+// connexion au model
 const Blog = mongoose.model('Blog', blogSchema);
 module.exports = Blog;
