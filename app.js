@@ -22,43 +22,7 @@ app.set('views', 'views'); // default value = views
 // Middleware
 app.use(morgan('dev'))
 app.use(express.static('public'));
-
-// mongoose and mongo sandbox routes
-app.get('/add/mongoose', (req, res) => {
-    const blog = new Blog();
-    blog.title = 'Mongoose';
-    blog.snippet = 'This is a mongoose blog';
-    blog.body = 'This is a mongoose blog body';
-    blog.save()
-    .then((result) =>{
-        res.send(result);
-    })
-    .catch((err) => console.log(err));
-});
-
-app.get('/mongooses', (req, res) => {
-    Blog.find()
-    .then((result) =>{
-        res.send(result);
-    })
-    .catch((err) => {
-        console.log(err)
-    });
-});
-
-app.get('/mongoose', (req, res) => {
-    Blog.findById(req.query.id)
-    .then((result) =>{
-        if(!result){
-            res.render('404');
-        }else{
-            res.send(result);
-        }
-    })
-    .catch((err) => {
-        console.log(err)
-    });
-});
+app.use(express.urlencoded({extended: true})); // middleware pour parser les données envoyées par le formulaire
 
 app.get('/', (req, res) => {
     const blogs = [
@@ -80,13 +44,22 @@ app.get('/blogs', (req, res) => {
         console.log(err)
     });
 });
+// create blog
+app.post('/blogs', (req, res) => {
+    // sauvegarde de données dans la bd
+    const blog = new Blog(req.body);
+    blog.save()
+    .then((result) => {
+        // redirige vers la page d'accueil
+        res.redirect('/blogs');
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+});
 app.get('/blogs/create', (req, res) => {
     res.render('create', { title: 'Create Blog Post', message: 'Create a new blog post' });
 });
-app.post('/blogs/create', (req, res) => {
-    res.send("ok");
-});
-
 app.use((req, res) => {
     res.status(404).render("404");
 });
