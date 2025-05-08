@@ -10,6 +10,7 @@ app.set('views', 'views'); // default value = views
 
 // Middleware
 app.use(morgan('dev'))
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     const blogs = [
