@@ -1,8 +1,13 @@
 const express = require("express");
 const morgan = require('morgan');
+const mongoose = require('mongoose');
 
 const app = express();
 
+const dbUri = "mongodb+srv://default_user:geGG6I5Qh8aiu9MA@expressjs-cluster-1.ecch1rq.mongodb.net/netninjas?retryWrites=true&w=majority&appName=expressjs-cluster-1";
+mongoose.connect(dbUri)
+    .then((result) => console.log("connected to db"))
+    .catch((err) => console.log(err));
 
 // register view engine
 app.set('view engine', 'ejs');
