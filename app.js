@@ -6,13 +6,13 @@ app.set('view engine', 'ejs');
 app.set('views', 'views'); // default value = views
 
 app.get('/', (req, res) => {
-    res.render('index', {title: 'Home Page', message: 'Welcome to my website'});
+    res.render('index', {title: 'Index Page', message: 'Welcome to my website'});
 });
 app.get('/about', (req, res) => {
-    res.render('about');
+    res.render('about', {title: 'About Page', message: 'This is the about page'});
 });
 app.get('/blogs/create', (req, res) => {
-    res.render('create');
+    res.render('create', {title: 'Create Blog Post', message: 'Create a new blog post'});
 });
 app.post('/blogs/create', (req, res) => {
     res.send("ok");

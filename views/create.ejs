@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My NodeJs PAGE</title>
-  </head>
-  <body>
-    <h1>Create Blog</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My NodeJs PAGE | <%= title %></title>
+</head>
+<body>
+    <h1><%= message %></h1>
     <nav>
-      <ul>
-        <li><a href="/">Index</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/blogs/create">New blog</a></li>
-      </ul>
+        <ul>
+            <li><a href="/">Index</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/blogs/create">New blog</a></li>
+        </ul>
     </nav>
-    <p>
-      New Blog: Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Reprehenderit, repudiandae! Vel, minus rem fuga itaque asperiores tenetur
-      nam iusto praesentium!
-    </p>
+    <p><%= message %></p>
     <form action="" method="post">
       <div>
         <label for="title">Blog title</label>
@@ -34,5 +30,5 @@
       </div>
       <button type="submit">Save</button>
     </form>
-  </body>
+</body>
 </html>
