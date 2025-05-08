@@ -5,6 +5,15 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', 'views'); // default value = views
 
+// Middleware
+app.use((req, res, next) => {
+    console.log('new request made:');
+    console.log('host:', req.hostname);
+    console.log('path:', req.path);
+    console.log('method:', req.method);
+    next();
+})
+
 app.get('/', (req, res) => {
     const blogs = [
         {title: 'Blog 1', snippet: 'This is the first blog'},
