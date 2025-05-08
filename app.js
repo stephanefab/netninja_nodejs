@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+var methodOverride = require('method-override')
 
 const Blog = require('./models/blog');
 
@@ -23,6 +24,8 @@ app.set('views', 'views'); // default value = views
 app.use(morgan('dev'))
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true})); // middleware pour parser les données envoyées par le formulaire
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'));
 
 app.get('/', (req, res) => {
     const blogs = [
@@ -44,11 +47,24 @@ app.get('/blogs', (req, res) => {
         console.log(err)
     });
 });
+app.get('/blogs/create', (req, res) => {
+    res.render('create', { title: 'Create Blog Post', message: 'Create a new blog post' });
+});
 app.get('/blogs/:id', (req, res) => {
     const id = req.params.id;
     Blog.findById(id)
     .then((result) =>{
         res.render('single', { title: 'Blog Info', message: 'Detail About Blog', blog: result });
+    })
+    .catch((err) => {
+        res.status(404).render("404")
+    });
+});
+app.delete('/blogs/:id', (req, res) => {
+    const id = req.params.id;
+    Blog.deleteOne({_id: id})
+    .then((result) =>{
+        res.redirect('/blogs');
     })
     .catch((err) => {
         res.status(404).render("404")
@@ -66,9 +82,6 @@ app.post('/blogs', (req, res) => {
     .catch((err) => {
         console.log(err);
     });
-});
-app.get('/blogs/create', (req, res) => {
-    res.render('create', { title: 'Create Blog Post', message: 'Create a new blog post' });
 });
 app.use((req, res) => {
     res.status(404).render("404");

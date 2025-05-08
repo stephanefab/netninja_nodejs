@@ -23,6 +23,9 @@
         <p><%= blog.body %></p>
         <p>Created At: <%= blog.createdAt %></p>
         <p>Updated At: <%= blog.updatedAt %></p>
+        <form action="/blogs/<%= blog._id  %>?_method=DELETE" method="post">
+            <button>Delete</button>
+        </form>
       </div>
       <% } else { %>
       <p>oops... Nothing found</p>
