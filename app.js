@@ -6,7 +6,12 @@ app.set('view engine', 'ejs');
 app.set('views', 'views'); // default value = views
 
 app.get('/', (req, res) => {
-    res.render('index', {title: 'Index Page', message: 'Welcome to my website'});
+    const blogs = [
+        {title: 'Blog 1', content: 'This is the first blog'},
+        {title: 'Blog 2', content: 'This is the second blog'},
+        {title: 'Blog 3', content: 'This is the third blog'}
+    ];
+    res.render('index', {title: 'Index Page', message: 'Welcome to my website', blogs: blogs});
 });
 app.get('/about', (req, res) => {
     res.render('about', {title: 'About Page', message: 'This is the about page'});
