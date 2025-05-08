@@ -62,7 +62,8 @@ app.get('/blogs/:id', (req, res) => {
 });
 app.delete('/blogs/:id', (req, res) => {
     const id = req.params.id;
-    Blog.deleteOne({_id: id})
+    // Blog.findByIdAndDelete(id) // delete the document if exists
+    Blog.deleteOne({_id: id}) // delete one
     .then((result) =>{
         res.redirect('/blogs');
     })
